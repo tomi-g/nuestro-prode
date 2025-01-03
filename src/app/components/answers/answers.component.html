@@ -1,0 +1,70 @@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white text-center">
+                    <h2>¡Juego de los Novios!</h2>
+                    <p class="mb-0">¿Quién de los dos...?</p>
+                </div>
+                <div class="card-body">
+                    <div class="mb-4">
+                        <label for="playerName" class="form-label">Tu Nombre:</label>
+                        <input type="text" 
+                               class="form-control" 
+                               id="playerName" 
+                               [(ngModel)]="playerName" 
+                               [disabled]="submitted"
+                               placeholder="Ingresa tu nombre">
+                    </div>
+
+                    <table class="table">
+                        <thead class="table-primary">
+                            <tr>
+                                <th scope="col" style="width: 10%">#</th>
+                                <th scope="col" style="width: 50%">Pregunta</th>
+                                <th scope="col" style="width: 40%">¿Quién?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let question of questions">
+                                <th scope="row">{{question.id}}</th>
+                                <td>{{question.text}}</td>
+                                <td>
+                                    <div class="btn-group w-100" role="group">
+                                        <input type="radio" 
+                                               class="btn-check" 
+                                               [name]="'question' + question.id" 
+                                               [id]="'tomi' + question.id"
+                                               [checked]="question.userAnswer === 'Tomi'"
+                                               (change)="onAnswerSelected(question.id, 'Tomi')"
+                                               [disabled]="submitted">
+                                        <label class="btn btn-outline-primary" 
+                                               [for]="'tomi' + question.id">Tomi</label>
+
+                                        <input type="radio" 
+                                               class="btn-check" 
+                                               [name]="'question' + question.id" 
+                                               [id]="'cami' + question.id"
+                                               [checked]="question.userAnswer === 'Cami'"
+                                               (change)="onAnswerSelected(question.id, 'Cami')"
+                                               [disabled]="submitted">
+                                        <label class="btn btn-outline-primary" 
+                                               [for]="'cami' + question.id">Cami</label>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="text-center mt-4">
+                        <button class="btn btn-primary" 
+                                (click)="onSubmit()" 
+                                [disabled]="isSubmitDisabled()">
+                            Enviar Respuestas
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

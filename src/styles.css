@@ -1,1 +1,61 @@
 /* You can add global styles to this file, and also import other style files */
+/* Sobrescribiendo los colores de Bootstrap */
+:root {
+    --bs-primary: #7f9e79;
+    --bs-primary-rgb: 127, 158, 121;
+}
+
+.bg-primary {
+    background-color: #7f9e79 !important;
+}
+
+.btn-primary {
+    background-color: #7f9e79 !important;
+    border-color: #7f9e79 !important;
+}
+
+.btn-outline-primary {
+    color: #7f9e79 !important;
+    border-color: #7f9e79 !important;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active,
+.btn-outline-primary.active {
+    background-color: #7f9e79 !important;
+    color: white !important;
+}
+
+.btn-check:checked + .btn-outline-primary {
+    background-color: #7f9e79 !important;
+    color: white !important;
+}
+
+.table-primary {
+    --bs-table-color: #000;
+    --bs-table-bg: #7f9e79 !important;
+    --bs-table-border-color: #7f9e79;
+    --bs-table-striped-bg: #7f9e79 !important;
+    --bs-table-striped-color: #000;
+    --bs-table-active-bg: #7f9e79 !important;
+    --bs-table-active-color: #000;
+    --bs-table-hover-bg: #8ba886 !important;
+    --bs-table-hover-color: #000;
+    color: white !important;
+    border-color: var(--bs-table-border-color);
+}
+
+.nav-link.active {
+    background-color: #7f9e79 !important;
+    color: white !important;
+}
+
+/* Ajustes adicionales para mejorar el contraste */
+.card-header.bg-primary {
+    border-bottom: none;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: rgba(255, 255, 255, 0.9);
+}
