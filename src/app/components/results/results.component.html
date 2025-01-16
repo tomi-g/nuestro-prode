@@ -9,17 +9,17 @@
                     <table class="table">
                         <thead class="table-primary">
                             <tr>
-                                <th scope="col">Posición</th>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Aciertos</th>
-                                <th scope="col">Porcentaje</th>
+                                <th scope="col" class="table-header">Posición</th>
+                                <th scope="col" class="table-header">Nombre</th>
+                                <th scope="col" class="table-header">Aciertos</th>
+                                <th scope="col" class="table-header">Porcentaje</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let result of results; let i = index">
                                 <th scope="row">{{i + 1}}</th>
                                 <td>{{result.playerName}}</td>
-                                <td>{{result.correctAnswers}} / {{result.totalQuestions}}</td>
+                                <td>{{result.score}} / {{result.totalQuestions}}</td>
                                 <td>{{getPercentage(result) | number:'1.0-0'}}%</td>
                             </tr>
                         </tbody>

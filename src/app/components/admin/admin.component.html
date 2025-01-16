@@ -1,54 +1,81 @@
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="container mt-5">
+    <div class="row">
+        <!-- Sección para agregar nuevas preguntas -->
+        <div class="col-md-12 mb-4">
             <div class="card">
-                <div class="card-header bg-primary text-white text-center">
-                    <h2>¡Respuestas de los Novios!</h2>
+                <div class="card-header bg-primary">
+                    <h4 class="mb-0 text-white">Agregar Nueva Pregunta</h4>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="newQuestion">Texto de la pregunta:</label>
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="newQuestion" 
+                                [(ngModel)]="newQuestionText"
+                                placeholder="Escribe aquí la nueva pregunta...">
+                            <button 
+                                class="btn btn-primary" 
+                                (click)="addNewQuestion()">
+                                Agregar Pregunta
+                            </button>
+                        </div>
+                    </div>
+                    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+                        {{ errorMessage }}
+                    </div>
+                    <div *ngIf="successMessage" class="alert alert-success mt-3">
+                        {{ successMessage }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de respuestas correctas -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header bg-primary">
+                    <h4 class="mb-0 text-white">Configurar Respuestas Correctas</h4>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <thead class="table-primary">
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Pregunta</th>
-                                <th scope="col">¿Quién?</th>
+                                <th scope="col" class="table-header">#</th>
+                                <th scope="col" class="table-header">Pregunta</th>
+                                <th scope="col" class="table-header">¿Quién?</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let question of questions">
-                                <th scope="row">{{question.id}}</th>
+                                <td>{{question.id}}</td>
                                 <td>{{question.text}}</td>
                                 <td>
                                     <div class="btn-group" role="group">
-                                        <input type="radio" 
-                                               class="btn-check" 
-                                               [name]="'question' + question.id" 
-                                               [id]="'tomi' + question.id"
-                                               [checked]="answers[question.id] === 'Tomi'"
-                                               (change)="onAnswerSelected(question.id, 'Tomi')">
-                                        <label class="btn btn-outline-primary" 
-                                               [for]="'tomi' + question.id">Tomi</label>
-
-                                        <input type="radio" 
-                                               class="btn-check" 
-                                               [name]="'question' + question.id" 
-                                               [id]="'cami' + question.id"
-                                               [checked]="answers[question.id] === 'Cami'"
-                                               (change)="onAnswerSelected(question.id, 'Cami')">
-                                        <label class="btn btn-outline-primary" 
-                                               [for]="'cami' + question.id">Cami</label>
+                                        <button 
+                                            type="button" 
+                                            class="btn" 
+                                            [class.btn-primary]="answers[question.id] === 'Tomi'"
+                                            [class.btn-outline-primary]="answers[question.id] !== 'Tomi'"
+                                            (click)="onAnswerSelected(question.id, 'Tomi')">
+                                            Tomi
+                                        </button>
+                                        <button 
+                                            type="button" 
+                                            class="btn" 
+                                            [class.btn-primary]="answers[question.id] === 'Cami'"
+                                            [class.btn-outline-primary]="answers[question.id] !== 'Cami'"
+                                            (click)="onAnswerSelected(question.id, 'Cami')">
+                                            Cami
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-
-                    <div class="text-center mt-4">
-                        <button class="btn btn-primary" 
-                                (click)="onSubmit()">
-                            Enviar Respuestas Correctas
-                        </button>
-                    </div>
+                    <button class="btn btn-primary" (click)="onSubmit()">Guardar Respuestas Correctas</button>
                 </div>
             </div>
         </div>

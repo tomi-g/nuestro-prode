@@ -14,11 +14,16 @@ export class ResultsComponent implements OnInit {
 
   ngOnInit() {
     this.gameService.getResults().subscribe(results => {
-      this.results = results.sort((a, b) => b.correctAnswers - a.correctAnswers);
+      if (results.length > 1) {
+        this.results = results.sort((a, b) => b.score - a.score);
+      }
+      else {
+        this.results = results;
+      }
     });
   }
 
   getPercentage(result: GameResults): number {
-    return (result.correctAnswers / result.totalQuestions) * 100;
+    return (result.score / result.totalQuestions) * 100;
   }
 }

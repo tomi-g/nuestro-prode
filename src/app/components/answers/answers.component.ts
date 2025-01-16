@@ -31,7 +31,7 @@ export class AnswersComponent implements OnInit {
   }
 
   onAnswerSelected(questionId: number, answer: 'Tomi' | 'Cami') {
-    this.gameService.submitUserAnswer(questionId, answer);
+    this.gameService.updateLocalAnswer(questionId, answer);
   }
 
   onSubmit() {
@@ -41,7 +41,9 @@ export class AnswersComponent implements OnInit {
     }
 
     this.gameService.setPlayerName(this.playerName);
-    this.submitted = true;
-    this.router.navigate(['/waiting']);
+    this.gameService.submitAllAnswers().subscribe(() => {
+      this.submitted = true;
+      this.router.navigate(['/waiting']);
+    });
   }
 }

@@ -10,7 +10,7 @@
                     <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Jugar</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" routerLink="/admin" routerLinkActive="active">Admin</a>
+                    <a class="nav-link" (click)="onAdminClick()" style="cursor: pointer;">Admin</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" routerLink="/results" routerLinkActive="active">Resultados</a>

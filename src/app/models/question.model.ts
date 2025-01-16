@@ -7,6 +7,6 @@ export interface Question {
 
 export interface GameResults {
     totalQuestions: number;
-    correctAnswers: number;
     playerName: string;
+    score: number;
 }
