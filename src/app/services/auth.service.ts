@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private adminPassword = 'admin123'; // En un caso real, esto debería estar en el backend
+  private adminPassword = 'soyjuli'; // En un caso real, esto debería estar en el backend
 
   constructor(private router: Router) {}
 
