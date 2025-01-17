@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/api'
+  apiUrl: 'https://questions-and-answers-test-615152946760.us-central1.run.app/api'
 };
